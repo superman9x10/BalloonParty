@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17c5df38ac5fda7499b44eeac342e844, type: 3}
+  m_Name: sickle
+  m_EditorClassIdentifier: 
+  weaponName: Sickle
+  weaponID: 2
+  atkRange: 1.5
+  numbOfBalloonCanHit: 1
+  bonusMovementSpeed: 8
+  weaponPrefab: {fileID: 2869461593508466452, guid: d274168459e944f4aaa670fa71ff1d3a, type: 3}

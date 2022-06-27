@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17c5df38ac5fda7499b44eeac342e844, type: 3}
+  m_Name: Scythe
+  m_EditorClassIdentifier: 
+  weaponName: Scythe
+  weaponID: 2
+  atkRange: 1.5
+  numbOfBalloonCanHit: 4
+  bonusMovementSpeed: 6
+  weaponPrefab: {fileID: 2726115955978446478, guid: 80a97855d7d3bee4a877fe9da2a577c4, type: 3}
