@@ -1847,9 +1847,10 @@ MonoBehaviour:
     m_Bits: 256
   colliders: []
   map: {fileID: 0}
+  groundToFind: yellowGround
   checkPointList: []
+  spawnPoint: {fileID: 0}
   targetPos: {fileID: 0}
-  finishLine: {fileID: 0}
   timeToRandom: 2
   player: {fileID: 0}
 --- !u!114 &7991713387625303566
@@ -1917,7 +1918,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7991713387625303552}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.16
   m_Speed: 8

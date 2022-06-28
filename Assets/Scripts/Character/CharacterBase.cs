@@ -33,9 +33,13 @@ public class CharacterBase : MonoBehaviour
     //protected GameObject ballToHit;
     [Header("Map")]
     [SerializeField] protected GameObject map;
+    [SerializeField] protected string groundToFind;
 
     [Header("CheckPoint")]
     [SerializeField] protected List<GameObject> checkPointList;
+
+    [Header("SpawnPoint")]
+    [SerializeField] Transform spawnPoint;
     private void Awake()
     {
         weapon = weaponPivot.transform.GetChild(0).gameObject;
@@ -46,12 +50,8 @@ public class CharacterBase : MonoBehaviour
 
         movementSpeed = weapon.GetComponent<WeaponBase>().getMovementSpeed();
     }
-
-
     protected void Start()
     {
-        createBalloonList();
-        createCheckpointList();
 
         weaponManager = GameObject.Find("weaponManager").GetComponent<WeaponManager>();
         GameObject tempDefaultWeapon = weaponManager.weapons[0];
@@ -62,6 +62,33 @@ public class CharacterBase : MonoBehaviour
             Instantiate(tmpWeapon, weaponPivot.transform);
         }
         
+    }
+
+    protected void Update()
+    {
+        if(MapManager.instance.isLoaded)
+        {
+            map = GameObject.FindGameObjectWithTag(groundToFind);
+
+            Debug.Log(gameObject.name + " " + map.name);
+
+            createBalloonList();
+            createCheckpointList();
+            transform.position = spawnPoint.position;
+
+            MapManager.instance.isLoaded = false;
+        }
+
+        if (weapon == null)
+        {
+            weapon = weaponPivot.transform.GetChild(0).gameObject;
+            weaponID = weapon.GetComponent<WeaponBase>().getWeaponID();
+
+            weaponTrigger = GetComponent<SphereCollider>();
+            weaponTrigger.radius = weapon.GetComponent<WeaponBase>().getWeaponRange();
+            movementSpeed = weapon.GetComponent<WeaponBase>().getMovementSpeed();
+
+        }
     }
 
     public void startAttack()
@@ -80,7 +107,6 @@ public class CharacterBase : MonoBehaviour
                 GameObject bal = colliders[i].gameObject;
                 hitBallon?.Invoke("blowUp", bal.transform.position);
                 balloonList.Remove(bal);
-                //hasFound = false;
                 Destroy(bal);
             }
         }
@@ -91,7 +117,6 @@ public class CharacterBase : MonoBehaviour
                 GameObject bal = colliders[i].gameObject;
                 hitBallon?.Invoke("blowUp", bal.transform.position);
                 balloonList.Remove(bal);
-                //hasFound = false;
                 Destroy(bal);
             }
         }
@@ -150,6 +175,7 @@ public class CharacterBase : MonoBehaviour
     protected void createBalloonList()
     {
         GameObject[] gameObjects = GameObject.FindGameObjectsWithTag(balloonTagToFind);
+        balloonList.Clear();
 
         for (int i = 0; i < gameObjects.Length; i++)
         {
@@ -161,6 +187,7 @@ public class CharacterBase : MonoBehaviour
     protected void createCheckpointList()
     {
         GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("CheckPoint");
+        checkPointList.Clear();
 
         for (int i = 0; i < gameObjects.Length; i++)
         {

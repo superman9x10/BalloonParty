@@ -28,19 +28,9 @@ public class PlayerController : CharacterBase
 
     void Update()
     {
-        if (weapon == null)
-        {
-            weapon = weaponPivot.transform.GetChild(0).gameObject;
-            weaponID = weapon.GetComponent<WeaponBase>().getWeaponID();
-
-            weaponTrigger = GetComponent<SphereCollider>();
-            weaponTrigger.radius = weapon.GetComponent<WeaponBase>().getWeaponRange();
-            movementSpeed = weapon.GetComponent<WeaponBase>().getMovementSpeed();
-
-        }
+        base.Update();
 
         movementProcess();
-
         //movement();
     }
 
@@ -69,6 +59,11 @@ public class PlayerController : CharacterBase
 
     protected override void movementProcess()
     {
+        if(GameManager.instance.gameState == GameManager.GameState.Ready && Input.GetMouseButtonDown(0))
+        {
+            GameManager.instance.updateGameState(GameManager.GameState.Play);
+        } 
+
         if (Input.GetMouseButton(0) && canMove)
         {
             if (EventSystem.current.IsPointerOverGameObject()) return;
@@ -79,6 +74,12 @@ public class PlayerController : CharacterBase
             dirX = new Vector3(mouseX, 0, 0);
 
             move();
+
+            if (map != null)
+            {
+                limitMoving();
+            }
+
             rotateProcess(dirX);
             animController.characterState = CharacterAnimController.CharacterState.Moving;
         }
@@ -97,7 +98,7 @@ public class PlayerController : CharacterBase
         touchPosX = Mathf.Clamp(touchPosX, -3.2f, 2.8f);
         
         transform.position = new Vector3(touchPosX, transform.position.y, transform.position.z);
-        limitMoving();
+        //limitMoving();
 
     }
 

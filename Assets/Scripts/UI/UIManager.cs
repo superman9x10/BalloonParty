@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] GameObject selectWeaponUI;
+    [SerializeField] GameObject WinUI;
     private PlayerController player;
     private void OnEnable()
     {
@@ -27,14 +28,17 @@ public class UIManager : MonoBehaviour
         {
             case GameManager.GameState.Ready:
                 {
+                    hideUI(WinUI);
                     break;
                 }
             case GameManager.GameState.Play:
                 {
+                    
                     break;
                 }
             case GameManager.GameState.Win:
                 {
+                    showUI(WinUI);
                     break;
                 }
             case GameManager.GameState.Lose:
@@ -72,4 +76,16 @@ public class UIManager : MonoBehaviour
         player.changeWeapon(tmpBtnIndex);
     }
 
+    public void nextLevel()
+    {
+        if(GameManager.instance.curLevel < MapManager.instance.levelList.Count - 1)
+        {
+            GameManager.instance.curLevel++;
+        } else
+        {
+            GameManager.instance.curLevel = 0;
+        }
+
+        GameManager.instance.updateGameState(GameManager.GameState.Ready);
+    }
 }

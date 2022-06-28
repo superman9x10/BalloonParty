@@ -9,15 +9,16 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public static event Action<GameState> OnGameStateChanged;
     public int curLevel;
-
     public GameState gameState;
+
 
     public enum GameState
     {
         Ready,
         Play,
         Win,
-        Lose
+        Lose,
+        NextLevel
     }
 
     private void Awake()
@@ -31,7 +32,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        updateGameState(GameState.Play);
+        updateGameState(GameState.Ready);
+
     }
 
     public void updateGameState(GameState newState)
@@ -41,6 +43,7 @@ public class GameManager : MonoBehaviour
         {
             case GameState.Ready:
                 {
+
                     break;
                 }
             case GameState.Play:
@@ -55,6 +58,11 @@ public class GameManager : MonoBehaviour
             case GameState.Lose:
                 {
                     Debug.Log("Lose");
+                    break;
+                }
+            case GameState.NextLevel:
+                {
+                    Debug.Log("next");
                     break;
                 }
         }

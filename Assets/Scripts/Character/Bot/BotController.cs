@@ -31,17 +31,7 @@ public class BotController : CharacterBase
 
     private void Update()
     {
-        if (weapon == null)
-        {
-            weapon = weaponPivot.transform.GetChild(0).gameObject;
-            weaponID = weapon.GetComponent<WeaponBase>().getWeaponID();
-
-            weaponTrigger = GetComponent<SphereCollider>();
-            weaponTrigger.radius = weapon.GetComponent<WeaponBase>().getWeaponRange();
-            movementSpeed = weapon.GetComponent<WeaponBase>().getMovementSpeed();
-        }
-
-        //randSpeed();
+        base.Update();
         movementProcess();
     }
 
@@ -69,7 +59,10 @@ public class BotController : CharacterBase
     protected override void movementProcess()
     {
         move();
-        limitMoving();
+        if(map != null)
+        {
+            limitMoving();
+        }
     }
     protected override void move()
     {
