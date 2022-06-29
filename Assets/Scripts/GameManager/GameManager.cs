@@ -18,7 +18,8 @@ public class GameManager : MonoBehaviour
         Play,
         Win,
         Lose,
-        NextLevel
+        Bonus,
+        EndGame
     }
 
     private void Awake()
@@ -60,9 +61,14 @@ public class GameManager : MonoBehaviour
                     Debug.Log("Lose");
                     break;
                 }
-            case GameState.NextLevel:
+            case GameState.Bonus:
                 {
-                    Debug.Log("next");
+                    Debug.Log("Bonus");
+                    break;
+                }
+            case GameState.EndGame:
+                {
+                    Debug.Log("End");
                     break;
                 }
         }

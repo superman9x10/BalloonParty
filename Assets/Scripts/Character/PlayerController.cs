@@ -10,18 +10,6 @@ public class PlayerController : CharacterBase
     [SerializeField] float sensitivityX;
     [SerializeField] FloatingJoystick joystick;
 
-
-    private void OnEnable()
-    {
-        GameManager.OnGameStateChanged += stateCanMove;
-    }
-
-    private void OnDisable()
-    {
-        GameManager.OnGameStateChanged -= stateCanMove;
-    }
-
-
     float mouseX;
     Vector3 dirX;
     float touchPosX;

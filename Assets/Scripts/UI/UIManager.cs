@@ -45,6 +45,15 @@ public class UIManager : MonoBehaviour
                 {
                     break;
                 }
+            case GameManager.GameState.Bonus:
+                {
+                    break;
+                }
+            case GameManager.GameState.EndGame:
+                {
+                    //showUI(WinUI);
+                    break;
+                }
         }
     }
 

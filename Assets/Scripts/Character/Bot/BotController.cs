@@ -13,15 +13,6 @@ public class BotController : CharacterBase
     [SerializeField] GameObject player;
 
     float timer;
-    private void OnEnable()
-    {
-        GameManager.OnGameStateChanged += stateCanMove;
-    }
-
-    private void OnDisable()
-    {
-        GameManager.OnGameStateChanged -= stateCanMove;
-    }
 
     private void Start()
     {

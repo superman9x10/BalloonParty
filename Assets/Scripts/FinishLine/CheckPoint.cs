@@ -19,7 +19,12 @@ public class CheckPoint : MonoBehaviour
                 uiManager.showSelectWeaponUI();
                 player.canMove = false;
                 player.getCheckPointList().Remove(gameObject);
+                if(player.getCheckPointList().Count == 0)
+                {
+                    Debug.Log("Chon vu khi danh xa");
+                }
             }
+
         }
         else
         {

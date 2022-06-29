@@ -343,7 +343,7 @@ MonoBehaviour:
   groundToFind: redGround
   checkPointList: []
   spawnPoint: {fileID: 0}
-  sensitivityX: 10
+  sensitivityX: 20
   joystick: {fileID: 0}
 --- !u!114 &5473106685755023084
 MonoBehaviour:

@@ -63,12 +63,14 @@
     <Compile Include="Assets\Scripts\Character\PlayerController.cs" />
     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
     <Compile Include="Assets\Scripts\Weapon\Xa\RangedWeapon.cs" />
+    <Compile Include="Assets\Scripts\Map\MapRenderer.cs" />
     <Compile Include="Assets\LowPolyWeaponsPack\SampleScenes\Scripts\ArmouryController.cs" />
     <Compile Include="Assets\Joystick Pack\Examples\JoystickPlayerExample.cs" />
     <Compile Include="Assets\Scripts\Character\CharacterBase.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\DynamicJoystick.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Base\Joystick.cs" />
     <Compile Include="Assets\Scripts\Character\CharacterAnimController.cs" />
+    <Compile Include="Assets\Scripts\Map\MapManager.cs" />
     <Compile Include="Assets\Joystick Pack\Examples\JoystickSetterExample.cs" />
     <Compile Include="Assets\Scripts\Character\Bot\BotController.cs" />
     <Compile Include="Assets\Scripts\Weapon\Gan\MeleeWeapon.cs" />
@@ -76,11 +78,9 @@
     <Compile Include="Assets\Scripts\GameManager\GameManager.cs" />
     <Compile Include="Assets\Scripts\Audio\SoundFxManager.cs" />
     <Compile Include="Assets\Scripts\Balloon\Balloon.cs" />
+    <Compile Include="Assets\Scripts\Map\MapConfig.cs" />
     <Compile Include="Assets\Scripts\FinishLine\CheckPoint.cs" />
     <Compile Include="Assets\LowPolyWeaponsPack\SampleScenes\Scripts\CatalogueScript.cs" />
-    <Compile Include="Assets\Scripts\Map\MapRenderer.cs" />
-    <Compile Include="Assets\Scripts\Map\MapManager.cs" />
-    <Compile Include="Assets\Scripts\Map\MapConfig.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -29,14 +29,12 @@ public class CharacterAnimController : MonoBehaviour
                 {
                     characterState = CharacterState.Idle;
                     animator.SetFloat("Speed", 0f);
-                    //animator.SetBool("isAttack", false);
                     break;
                 }
             case CharacterState.Moving:
                 {
                     characterState = CharacterState.Moving;
                     animator.SetFloat("Speed", 1f);
-                    //animator.SetBool("isAttack", false);
                     break;
                 }
             case CharacterState.Attack:

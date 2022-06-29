@@ -40,6 +40,18 @@ public class CharacterBase : MonoBehaviour
 
     [Header("SpawnPoint")]
     [SerializeField] Transform spawnPoint;
+
+    private void OnEnable()
+    {
+        GameManager.OnGameStateChanged += playState;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnGameStateChanged -= playState;
+    }
+
+
     private void Awake()
     {
         weapon = weaponPivot.transform.GetChild(0).gameObject;
@@ -66,19 +78,6 @@ public class CharacterBase : MonoBehaviour
 
     protected void Update()
     {
-        if(MapManager.instance.isLoaded)
-        {
-            map = GameObject.FindGameObjectWithTag(groundToFind);
-
-            Debug.Log(gameObject.name + " " + map.name);
-
-            createBalloonList();
-            createCheckpointList();
-            transform.position = spawnPoint.position;
-
-            MapManager.instance.isLoaded = false;
-        }
-
         if (weapon == null)
         {
             weapon = weaponPivot.transform.GetChild(0).gameObject;
@@ -143,7 +142,6 @@ public class CharacterBase : MonoBehaviour
     }
 
 
-
     protected void limitMoving()
     {
         float mapSize = map.GetComponent<Renderer>().bounds.size.x;
@@ -162,9 +160,23 @@ public class CharacterBase : MonoBehaviour
     protected virtual void movementProcess() { }
     protected virtual void move() { }
 
-    protected void stateCanMove(GameManager.GameState state)
+    protected void playState(GameManager.GameState state)
     {
         canMove = state == GameManager.GameState.Play;
+
+        if (state == GameManager.GameState.Ready)
+        {
+            transform.position = spawnPoint.position;
+        }
+        
+        if (state == GameManager.GameState.Play)
+        {
+            map = GameObject.FindGameObjectWithTag(groundToFind);
+
+            createBalloonList();
+            createCheckpointList();
+            
+        }
     }
     protected void rotateProcess(Vector3 dirX)
     {

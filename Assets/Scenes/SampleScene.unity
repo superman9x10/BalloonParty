@@ -3622,12 +3622,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 320259725}
   m_LocalRotation: {x: 0.25856608, y: 0, z: 0, w: 0.9659936}
-  m_LocalPosition: {x: -0.16, y: 11.44, z: -14.190001}
+  m_LocalPosition: {x: -0.16, y: 11.44, z: -15.299999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2033120286}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 29.97, y: 0, z: 0}
 --- !u!1 &329584424
 GameObject:
@@ -7796,7 +7796,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 50, y: 0, z: 0}
 --- !u!1 &713133392
 GameObject:
@@ -7871,7 +7871,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 716091055}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 332690845}
@@ -9421,7 +9421,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 847123647}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 0, z: 0}
+  m_LocalPosition: {x: -6.17, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 332690845}
@@ -10600,7 +10600,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.25856608, y: 0, z: 0, w: 0.9659936}
-  m_LocalPosition: {x: -0.16, y: 11.44, z: -14.190001}
+  m_LocalPosition: {x: -0.16, y: 11.44, z: -15.299999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -13145,9 +13145,10 @@ MonoBehaviour:
   levelList:
   - {fileID: 11400000, guid: c65d091cd3418b84e9a96a63a23ed967, type: 2}
   - {fileID: 11400000, guid: 47e4221aba4405b4690c13927a63762d, type: 2}
+  - {fileID: 11400000, guid: 2fd55e10306d06f49ad81f69ebcd5d6b, type: 2}
   mapSpawnPoint: {fileID: 582463798}
   mapModels: []
-  isLoaded: 0
+  canCreate: 1
 --- !u!4 &1177138668
 Transform:
   m_ObjectHideFlags: 0
@@ -16218,7 +16219,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1464883609}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: 0, z: 0}
+  m_LocalPosition: {x: 5.8, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 332690845}
@@ -20857,7 +20858,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1901788950
 PrefabInstance:
@@ -22322,7 +22323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: -0.16, y: 11.33, z: -12}
+  m_FollowOffset: {x: -0.16, y: 11.33, z: -13.11}
   m_XDamping: 1.4
   m_YDamping: 1.1
   m_ZDamping: 4.2
@@ -23847,13 +23848,13 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1464883610}
-    - target: {fileID: 3698471113051218946, guid: 84d74a5b9000e2d4c9df6aacdef01317, type: 3}
-      propertyPath: groundToFind
-      value: greenGround
-      objectReference: {fileID: 0}
     - target: {fileID: 3698471113051218947, guid: 84d74a5b9000e2d4c9df6aacdef01317, type: 3}
       propertyPath: m_Name
       value: GreenBot
+      objectReference: {fileID: 0}
+    - target: {fileID: 3698471113051218947, guid: 84d74a5b9000e2d4c9df6aacdef01317, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7684738976698998079, guid: 84d74a5b9000e2d4c9df6aacdef01317, type: 3}
       propertyPath: m_RootOrder
@@ -24564,6 +24565,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1546153073599464348, guid: c1da9fe59bd5cea41aaff2b37e0d379c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2179419701073287462, guid: c1da9fe59bd5cea41aaff2b37e0d379c, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -24814,6 +24819,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: YellowBot
       objectReference: {fileID: 0}
+    - target: {fileID: 7991713387625303552, guid: 51d14305e4a4e3e479256230c28af279, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7991713387625303553, guid: 51d14305e4a4e3e479256230c28af279, type: 3}
       propertyPath: player
       value: 
@@ -24998,7 +25007,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8211231876933204934, guid: 90a6d3fb9d3eed64d9790a0d0c3a8888, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8211231876933204934, guid: 90a6d3fb9d3eed64d9790a0d0c3a8888, type: 3}
       propertyPath: m_LocalPosition.x

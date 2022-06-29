@@ -6,11 +6,14 @@ public class FinishLine : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
+            other.GetComponent<CharacterBase>().canMove = false;
             GameManager.instance.updateGameState(GameManager.GameState.Win);
-        } else
+        }
+        else
         {
+            other.GetComponent<CharacterBase>().canMove = false;
             GameManager.instance.updateGameState(GameManager.GameState.Lose);
         }
     }
