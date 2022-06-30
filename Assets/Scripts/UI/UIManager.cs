@@ -7,7 +7,14 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] GameObject selectWeaponUI;
     [SerializeField] GameObject WinUI;
+    [SerializeField] GameObject bonusStageUI;
+
+    public static UIManager instance;
     private PlayerController player;
+    private void Awake()
+    {
+        instance = this;
+    }
     private void OnEnable()
     {
         GameManager.OnGameStateChanged += managerUI;
@@ -29,6 +36,7 @@ public class UIManager : MonoBehaviour
             case GameManager.GameState.Ready:
                 {
                     hideUI(WinUI);
+                    hideUI(bonusStageUI);
                     break;
                 }
             case GameManager.GameState.Play:
@@ -52,6 +60,7 @@ public class UIManager : MonoBehaviour
             case GameManager.GameState.EndGame:
                 {
                     //showUI(WinUI);
+                    hideUI(bonusStageUI);
                     break;
                 }
         }
@@ -69,6 +78,11 @@ public class UIManager : MonoBehaviour
     public void showSelectWeaponUI()
     {
         showUI(selectWeaponUI);
+    }
+
+    public void showBonusStageUI()
+    {
+        showUI(bonusStageUI);
     }
 
     public void afterSelectWeapon()

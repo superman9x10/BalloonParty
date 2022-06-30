@@ -73,6 +73,7 @@ public class CharacterBase : MonoBehaviour
 
     protected void Update()
     {
+
         if (weapon == null)
         {
             weapon = weaponPivot.transform.GetChild(0).gameObject;

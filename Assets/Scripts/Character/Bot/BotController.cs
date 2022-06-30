@@ -12,8 +12,6 @@ public class BotController : CharacterBase
     [SerializeField] float timeToRandom;
     [SerializeField] GameObject player;
 
-    float timer;
-
     private void Start()
     {
         base.Start();
@@ -26,29 +24,13 @@ public class BotController : CharacterBase
         movementProcess();
     }
 
-    void randSpeed()
-    {
-        if(timer <= 0)
-        {
-            int speed;
-            if (player.transform.position.z >= transform.position.z)
-            {
-                speed = Random.Range(7, 15);
-            } else
-            {
-                speed = Random.Range(5, 9);
-            }
-            
-            timer = timeToRandom;
-        } else
-        {
-            timer -= Time.deltaTime;
-        }
-        
-    }
-
     protected override void movementProcess()
     {
+        //if(GameManager.instance.gameState == GameManager.GameState.Ready && Input.GetMouseButtonDown(0))
+        //{
+        //    canMove = true;
+        //}
+
         move();
         if(map != null)
         {

@@ -3,12 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 public class CheckPoint : MonoBehaviour
 {
-    [SerializeField] UIManager uiManager;
-    private void Start()
-    {
-        uiManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -18,8 +12,7 @@ public class CheckPoint : MonoBehaviour
             {
                 player.canMove = false;
                 player.getCheckPointList().Remove(gameObject);
-                uiManager.showSelectWeaponUI();
-
+                UIManager.instance.showSelectWeaponUI();
 
             }
 

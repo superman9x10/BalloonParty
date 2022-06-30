@@ -39,7 +39,10 @@ public class CamController : MonoBehaviour
             camOffset.m_FollowOffset = new Vector3(offsetX, offsetY, offsetZ);
 
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(15f, 0, 0)), 3 * Time.deltaTime);
-            
+            if(camOffset.m_FollowOffset == new Vector3(0.36f, 3f, -2.5f))
+            {
+                UIManager.instance.showBonusStageUI();
+            }
         }
     }
 

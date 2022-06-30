@@ -11,6 +11,7 @@ public class WeaponManager : MonoBehaviour
     public List<WeaponConfig> meleeWeapon;
 
     CharacterBase player;
+    //public bool isLastCheckPoint;
     private void Awake()
     {
         instance = this;
@@ -34,10 +35,8 @@ public class WeaponManager : MonoBehaviour
     {
         weapons.Clear();
         
-
         if (player.getCheckPointList().Count == 0)
         {
-            Debug.Log("Last1");
             foreach (var weapon in rangeWeapon)
             {
                 weapons.Add(weapon.weaponPrefab);
@@ -45,7 +44,6 @@ public class WeaponManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Last2");
             foreach (var weapon in meleeWeapon)
             {
                 weapons.Add(weapon.weaponPrefab);

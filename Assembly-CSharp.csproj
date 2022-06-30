@@ -83,6 +83,28 @@
     <Compile Include="Assets\LowPolyWeaponsPack\SampleScenes\Scripts\CatalogueScript.cs" />
     <Compile Include="Assets\Scripts\UI\LoadWeaponToUI.cs" />
     <Compile Include="Assets\Scripts\Camera\CamController.cs" />
+    <Compile Include="Assets\Scripts\UI\BonusUI\BonusUI.cs" />
+    <Compile Include="Assets\PS-ProgressBar\Examples\Scripts\TestBarControl.cs" />
+    <Compile Include="Assets\PS-ProgressBar\Examples\Scripts\TestPageSwitch.cs" />
+    <Compile Include="Assets\PS-ProgressBar\Scripts\Utils\Utils.cs" />
+    <Compile Include="Assets\PS-ProgressBar\Scripts\BarViewPosImageFill.cs" />
+    <Compile Include="Assets\PS-ProgressBar\Scripts\BarViewSizeImageFill.cs" />
+    <Compile Include="Assets\PS-ProgressBar\Examples\Scripts\TestSwitchBar.cs" />
+    <Compile Include="Assets\PS-ProgressBar\Scripts\BarViewScale.cs" />
+    <Compile Include="Assets\PS-ProgressBar\Scripts\BarViewColorWhileMoving.cs" />
+    <Compile Include="Assets\PS-ProgressBar\Scripts\Utils\ImageSlicedMirror.cs" />
+    <Compile Include="Assets\PS-ProgressBar\Examples\Scripts\AssetStoreLink.cs" />
+    <Compile Include="Assets\PS-ProgressBar\Scripts\ProgressBarPro.cs" />
+    <Compile Include="Assets\PS-ProgressBar\Scripts\BarViewSizeAnchors.cs" />
+    <Compile Include="Assets\PS-ProgressBar\Scripts\BarViewValueText.cs" />
+    <Compile Include="Assets\PS-ProgressBar\Scripts\BarViewPosAnchors.cs" />
+    <Compile Include="Assets\PS-ProgressBar\Scripts\ProgressBarProView.cs" />
+    <Compile Include="Assets\PS-ProgressBar\Scripts\BarViewColor.cs" />
+    <Compile Include="Assets\PS-ProgressBar\Scripts\BarViewSizeAnchorsShadow.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\PS-ProgressBar\Scripts\Extensions\readme.txt.txt" />
+    <None Include="Assets\PS-ProgressBar\readme.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

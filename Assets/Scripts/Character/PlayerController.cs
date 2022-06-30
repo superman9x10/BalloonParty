@@ -47,9 +47,10 @@ public class PlayerController : CharacterBase
 
     protected override void movementProcess()
     {
-        if(GameManager.instance.gameState == GameManager.GameState.Ready && Input.GetMouseButtonDown(0))
+        if (GameManager.instance.gameState == GameManager.GameState.Ready && Input.GetMouseButtonDown(0))
         {
             GameManager.instance.updateGameState(GameManager.GameState.Play);
+            //canMove = true;
         }
 
         //rotateProcess(dirX);
