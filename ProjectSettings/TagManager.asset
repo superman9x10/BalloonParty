@@ -18,6 +18,7 @@ TagManager:
   - redGround
   - greenGround
   - yellowGround
+  - BonusStage
   layers:
   - Default
   - TransparentFX

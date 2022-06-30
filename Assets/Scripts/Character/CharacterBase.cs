@@ -21,7 +21,6 @@ public class CharacterBase : MonoBehaviour
     protected SphereCollider weaponTrigger;
 
     protected WeaponManager weaponManager;
-    protected int indexPreWeapon;
 
 
     [Header("Balloon")]
@@ -54,7 +53,10 @@ public class CharacterBase : MonoBehaviour
 
     private void Awake()
     {
+
         weapon = weaponPivot.transform.GetChild(0).gameObject;
+
+        
         weaponID = weapon.GetComponent<WeaponBase>().getWeaponID();
 
         weaponTrigger = GetComponent<SphereCollider>();
@@ -66,13 +68,6 @@ public class CharacterBase : MonoBehaviour
     {
 
         weaponManager = GameObject.Find("weaponManager").GetComponent<WeaponManager>();
-        GameObject tempDefaultWeapon = weaponManager.weapons[0];
-        indexPreWeapon = 0;
-        if(weapon == null)
-        {
-            GameObject tmpWeapon = weaponManager.weapons[indexPreWeapon];
-            Instantiate(tmpWeapon, weaponPivot.transform);
-        }
         
     }
 
@@ -181,7 +176,7 @@ public class CharacterBase : MonoBehaviour
     protected void rotateProcess(Vector3 dirX)
     {
         Quaternion targetRot = Quaternion.LookRotation(dirX);
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, 3 * Time.deltaTime);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, 5 * Time.deltaTime);
     }
 
     protected void createBalloonList()

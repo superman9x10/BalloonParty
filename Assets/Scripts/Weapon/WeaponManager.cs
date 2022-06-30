@@ -4,25 +4,55 @@ using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
 {
-    public List<GameObject> weapons; 
-    //public List<Weapon> levelList;
-    //List<int> weaponType;
-    
-    //void loadNewWeapon()
-    //{
-    //    for(int i = 0; i < levelList[GameManager.instance.curLevel].weaponConfigs.Count; i++)
-    //    {
-    //        if(!weaponType.Contains(levelList[GameManager.instance.curLevel].weaponConfigs[i].numbOfBalloonCanHit))
-    //        {
-    //            weapons.Add(levelList[GameManager.instance.curLevel].weaponConfigs[i].weaponPrefab);
-    //        }
-    //    }
-    //}
+    public static WeaponManager instance;
+    public List<GameObject> weapons;
+
+    public List<WeaponConfig> rangeWeapon;
+    public List<WeaponConfig> meleeWeapon;
+
+    CharacterBase player;
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterBase>();
+    }
+
+    private void OnEnable()
+    {
+        LoadWeaponToUI.onEnableWeaponUI += updateWeaponList;
+    }
+
+    private void OnDisable()
+    {
+        LoadWeaponToUI.onEnableWeaponUI -= updateWeaponList;
+    }
+    void updateWeaponList()
+    {
+        weapons.Clear();
+        
+
+        if (player.getCheckPointList().Count == 0)
+        {
+            Debug.Log("Last1");
+            foreach (var weapon in rangeWeapon)
+            {
+                weapons.Add(weapon.weaponPrefab);
+            }
+        }
+        else
+        {
+            Debug.Log("Last2");
+            foreach (var weapon in meleeWeapon)
+            {
+                weapons.Add(weapon.weaponPrefab);
+            }
+        }
+        
+    }
 }
 
-[System.Serializable]
-public class Weapon
-{
-    public string level;
-    public List<WeaponConfig> weaponConfigs;
-}
+

@@ -81,6 +81,8 @@
     <Compile Include="Assets\Scripts\Map\MapConfig.cs" />
     <Compile Include="Assets\Scripts\FinishLine\CheckPoint.cs" />
     <Compile Include="Assets\LowPolyWeaponsPack\SampleScenes\Scripts\CatalogueScript.cs" />
+    <Compile Include="Assets\Scripts\UI\LoadWeaponToUI.cs" />
+    <Compile Include="Assets\Scripts\Camera\CamController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -44,11 +44,13 @@ public class GameManager : MonoBehaviour
         {
             case GameState.Ready:
                 {
-
+                    CamController.instance.canChangeToBonusStageOffset = false;
+                    //Debug.Log("Ready");
                     break;
                 }
             case GameState.Play:
                 {
+                    //Debug.Log("Play");
                     break;
                 }
             case GameState.Win:

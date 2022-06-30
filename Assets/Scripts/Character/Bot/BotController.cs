@@ -64,7 +64,8 @@ public class BotController : CharacterBase
             {
                 targetPos = balloonList[0].transform;
                 Vector3 dir = (targetPos.position - transform.position).normalized;
-                transform.position +=  dir * movementSpeed * Time.deltaTime;
+                dir.y = 0;
+                transform.position += dir * movementSpeed * Time.deltaTime;
                 rotateProcess(dir);
             }
 
@@ -86,13 +87,9 @@ public class BotController : CharacterBase
     public void changeWeapon()
     {
         int index = Random.Range(0, weaponManager.weapons.Count);
-        if (indexPreWeapon != index)
-        {
-            Destroy(weapon);
-            GameObject tmpWeapon = weaponManager.weapons[index];
-            Instantiate(tmpWeapon, weaponPivot.transform);
+        Destroy(weapon);
+        GameObject tmpWeapon = weaponManager.weapons[index];
+        Instantiate(tmpWeapon, weaponPivot.transform);
 
-            indexPreWeapon = index;
-        }
     }
 }

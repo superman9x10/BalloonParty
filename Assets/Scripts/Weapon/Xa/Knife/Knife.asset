@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Knife
   m_EditorClassIdentifier: 
   weaponName: Knife
-  weaponType: xa
-  atkSpeed: 0
+  weaponID: 0
   atkRange: 1
-  distHit: 5
+  numbOfBalloonCanHit: 0
+  bonusMovementSpeed: 8
+  weaponPrefab: {fileID: 996052313918620468, guid: e5fbd389f25125847b63e4042e8a0f3d, type: 3}

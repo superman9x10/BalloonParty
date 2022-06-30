@@ -38,7 +38,7 @@ public class UIManager : MonoBehaviour
                 }
             case GameManager.GameState.Win:
                 {
-                    showUI(WinUI);
+                    //showUI(WinUI);
                     break;
                 }
             case GameManager.GameState.Lose:

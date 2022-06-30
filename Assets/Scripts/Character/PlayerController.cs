@@ -50,7 +50,9 @@ public class PlayerController : CharacterBase
         if(GameManager.instance.gameState == GameManager.GameState.Ready && Input.GetMouseButtonDown(0))
         {
             GameManager.instance.updateGameState(GameManager.GameState.Play);
-        } 
+        }
+
+        //rotateProcess(dirX);
 
         if (Input.GetMouseButton(0) && canMove)
         {
@@ -92,13 +94,12 @@ public class PlayerController : CharacterBase
 
     public void changeWeapon(int weaponIndex)
     {
-        if (indexPreWeapon != weaponIndex)
+        //if (indexPreWeapon != weaponIndex)
         {
             Destroy(weapon);
             GameObject tmpWeapon = weaponManager.weapons[weaponIndex];
             Instantiate(tmpWeapon, weaponPivot.transform);
-
-            indexPreWeapon = weaponIndex;
+           // indexPreWeapon = weaponIndex;
         }
     }
 

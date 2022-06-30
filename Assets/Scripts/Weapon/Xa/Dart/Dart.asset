@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Dart
   m_EditorClassIdentifier: 
   weaponName: Dart
-  weaponType: Xa
-  atkSpeed: 0
+  weaponID: 0
   atkRange: 1
-  distHit: 3
+  numbOfBalloonCanHit: 0
+  bonusMovementSpeed: 8
+  weaponPrefab: {fileID: 7226287169479148828, guid: 3b7dd097b3bc6484ab129358a751ef58, type: 3}

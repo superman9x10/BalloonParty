@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 public class CheckPoint : MonoBehaviour
 {
-    UIManager uiManager;
-
+    [SerializeField] UIManager uiManager;
     private void Start()
     {
         uiManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -16,13 +16,11 @@ public class CheckPoint : MonoBehaviour
             CharacterBase player = other.GetComponent<CharacterBase>();
             if (player.getCheckPointList().Contains(gameObject))
             {
-                uiManager.showSelectWeaponUI();
                 player.canMove = false;
                 player.getCheckPointList().Remove(gameObject);
-                if(player.getCheckPointList().Count == 0)
-                {
-                    Debug.Log("Chon vu khi danh xa");
-                }
+                uiManager.showSelectWeaponUI();
+
+
             }
 
         }
