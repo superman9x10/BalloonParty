@@ -14,7 +14,7 @@ public class BotController : CharacterBase
 
     private void Start()
     {
-        base.Start();
+        //base.Start();
 
     }
 
@@ -60,6 +60,10 @@ public class BotController : CharacterBase
 
             animController.characterState = CharacterAnimController.CharacterState.Moving;
         }
+        else if (autoMove)
+        {
+            autoMoveHandle();
+        }
         else
         {
             animController.characterState = CharacterAnimController.CharacterState.Idle;
@@ -68,10 +72,26 @@ public class BotController : CharacterBase
 
     public void changeWeapon()
     {
-        int index = Random.Range(0, weaponManager.weapons.Count);
+        //int index = Random.Range(0, WeaponManager.instance.weapons.Count);
+        //Destroy(weapon);
+        //GameObject tmpWeapon = WeaponManager.instance.weapons[index];
+        //Instantiate(tmpWeapon, weaponPivot.transform);
+
         Destroy(weapon);
-        GameObject tmpWeapon = weaponManager.weapons[index];
+        int index = Random.Range(0, WeaponManager.instance.weapons.Count);
+        GameObject tmpWeapon;
+        if (checkPointList.Count == 0)
+        {
+            tmpWeapon = WeaponManager.instance.getRangeWeapon()[index];
+        }
+        else
+        {
+            tmpWeapon = WeaponManager.instance.getMeleeWeapon()[index];
+        }
+
         Instantiate(tmpWeapon, weaponPivot.transform);
 
     }
+
+    
 }

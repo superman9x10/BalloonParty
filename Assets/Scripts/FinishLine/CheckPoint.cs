@@ -5,37 +5,35 @@ public class CheckPoint : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        CharacterBase character = other.GetComponent<CharacterBase>();
+        if (character.getCheckPointList().Contains(gameObject))
         {
-            CharacterBase player = other.GetComponent<CharacterBase>();
-            if (player.getCheckPointList().Contains(gameObject))
+            character.canMove = false;
+            character.getCheckPointList().Remove(gameObject);
+            
+            if(other.CompareTag("Player"))
             {
-                player.canMove = false;
-                player.getCheckPointList().Remove(gameObject);
                 UIManager.instance.showSelectWeaponUI();
-
-            }
-
-        }
-        else
-        {
-            CharacterBase bot = other.GetComponent<CharacterBase>();
-            if(bot.getCheckPointList().Contains(gameObject))
+            } else
             {
-                bot.canMove = false;
-                bot.getCheckPointList().Remove(gameObject);
-                StartCoroutine(delayMoving((BotController) bot));
+                StartCoroutine(delayMoving((BotController) character));
             }
         }
     }
 
     IEnumerator delayMoving(BotController bot)
     {
-        int randTime = Random.Range(1, 3);
+        int randTime = Random.Range(1, 2);
         yield return new WaitForSeconds(randTime);
         bot.changeWeapon();
-        bot.canMove = true;
-
+        if(bot.getCheckPointList().Count == 0)
+        {
+            bot.autoMove = true;
+        }
+        if(!bot.autoMove)
+        {
+            bot.canMove = true;
+        }
     }
 
 }

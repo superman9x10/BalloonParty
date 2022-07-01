@@ -11,11 +11,13 @@ public class SoundFxManager : MonoBehaviour
     private void OnEnable()
     {
         CharacterBase.hitBallon += playSoundFx;
+        Balloon.balloonHitRangeWeapon += playSoundFx;
     }
 
     private void OnDisable()
     {
         CharacterBase.hitBallon -= playSoundFx;
+        Balloon.balloonHitRangeWeapon -= playSoundFx;
     }
     private void Start()
     {

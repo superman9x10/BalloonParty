@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 public class PlayerController : CharacterBase
 {
-   // public static event Action<CharacterAnimController.CharacterState ,int> OnPlayerWeaponChanged;
-
     [Header("PlayerConfig")]
     [SerializeField] float sensitivityX;
     [SerializeField] FloatingJoystick joystick;
@@ -53,7 +51,6 @@ public class PlayerController : CharacterBase
             //canMove = true;
         }
 
-        //rotateProcess(dirX);
 
         if (Input.GetMouseButton(0) && canMove)
         {
@@ -74,6 +71,10 @@ public class PlayerController : CharacterBase
             rotateProcess(dirX);
             animController.characterState = CharacterAnimController.CharacterState.Moving;
         }
+        else if(autoMove)
+        {
+            autoMoveHandle();
+        }
         else
         {
             animController.characterState = CharacterAnimController.CharacterState.Idle;
@@ -89,19 +90,21 @@ public class PlayerController : CharacterBase
         touchPosX = Mathf.Clamp(touchPosX, -3.2f, 2.8f);
         
         transform.position = new Vector3(touchPosX, transform.position.y, transform.position.z);
-        //limitMoving();
 
     }
 
     public void changeWeapon(int weaponIndex)
     {
-        //if (indexPreWeapon != weaponIndex)
+        Destroy(weapon);
+        GameObject tmpWeapon;
+        if (checkPointList.Count == 0)
         {
-            Destroy(weapon);
-            GameObject tmpWeapon = weaponManager.weapons[weaponIndex];
-            Instantiate(tmpWeapon, weaponPivot.transform);
-           // indexPreWeapon = weaponIndex;
+            tmpWeapon = WeaponManager.instance.getRangeWeapon()[weaponIndex];
+        } else
+        {
+            tmpWeapon = WeaponManager.instance.getMeleeWeapon()[weaponIndex];
         }
+        
+        Instantiate(tmpWeapon, weaponPivot.transform);
     }
-
 }

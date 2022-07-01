@@ -12,26 +12,35 @@ public class CamController : MonoBehaviour
     [SerializeField] float smoothCamSpeed;
     CinemachineTransposer camOffset;
     Vector3 firstCamOffset;
-    float firstXRotation;
+    Quaternion firstRotation;
 
     private void Awake()
     {
         instance = this;
     }
 
+    private void OnEnable()
+    {
+        GameManager.OnGameStateChanged += resetCam;
+    }
+    private void OnDisable()
+    {
+        GameManager.OnGameStateChanged -= resetCam;
+    }
+
+
     private void Start()
     {
         camOffset = camObj.GetCinemachineComponent<CinemachineTransposer>();
         firstCamOffset = camOffset.m_FollowOffset;
-        firstXRotation = transform.rotation.x;
+        firstRotation = transform.rotation;
 
     }
 
 
     private void Update()
     {
-
-        if (CamController.instance.canChangeToBonusStageOffset)
+        if (canChangeToBonusStageOffset)
         {
             float offsetX = Mathf.Lerp(camOffset.m_FollowOffset.x, 0.36f, smoothCamSpeed * Time.deltaTime);
             float offsetY = Mathf.Lerp(camOffset.m_FollowOffset.y, 3f, smoothCamSpeed * Time.deltaTime);
@@ -43,6 +52,15 @@ public class CamController : MonoBehaviour
             {
                 UIManager.instance.showBonusStageUI();
             }
+        }
+    }
+
+    void resetCam(GameManager.GameState state)
+    {
+        if(state == GameManager.GameState.Ready)
+        {
+            camOffset.m_FollowOffset = firstCamOffset;
+            transform.rotation = firstRotation;
         }
     }
 

@@ -59,7 +59,7 @@ public class UIManager : MonoBehaviour
                 }
             case GameManager.GameState.EndGame:
                 {
-                    //showUI(WinUI);
+                    showUI(WinUI);
                     hideUI(bonusStageUI);
                     break;
                 }
@@ -87,8 +87,18 @@ public class UIManager : MonoBehaviour
 
     public void afterSelectWeapon()
     {
+        
         CharacterBase player = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterBase>();
-        player.canMove = true;
+        
+        if(player.getCheckPointList().Count == 0)
+        {
+              player.autoMove = true;
+        }
+
+        if (!player.autoMove)
+        {
+            player.canMove = true;
+        }
         
     }
 

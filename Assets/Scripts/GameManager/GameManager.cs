@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
                 }
             case GameState.EndGame:
                 {
-                    Debug.Log("End");
+                    //Debug.Log("End");
                     break;
                 }
         }

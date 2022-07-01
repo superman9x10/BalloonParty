@@ -10,11 +10,13 @@ public class FXManager : MonoBehaviour
     private void OnEnable()
     {
         CharacterBase.hitBallon += instanceFx;
+        Balloon.balloonHitRangeWeapon += instanceFx;
     }
 
     private void OnDisable()
     {
         CharacterBase.hitBallon -= instanceFx;
+        Balloon.balloonHitRangeWeapon -= instanceFx;
     }
 
     void Start()

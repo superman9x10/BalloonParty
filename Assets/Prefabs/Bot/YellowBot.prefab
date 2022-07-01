@@ -1838,6 +1838,7 @@ MonoBehaviour:
   animController: {fileID: 7991713387625303566}
   movementSpeed: 8
   canMove: 0
+  autoMove: 0
   weaponPivot: {fileID: 857811831}
   balloonTagToFind: Yellow
   balloonList: []
@@ -1847,6 +1848,8 @@ MonoBehaviour:
   colliders: []
   map: {fileID: 0}
   groundToFind: yellowGround
+  finishLinePos: {fileID: 0}
+  finishLineToFind: YellowFinish
   checkPointList: []
   spawnPoint: {fileID: 0}
   targetPos: {fileID: 0}

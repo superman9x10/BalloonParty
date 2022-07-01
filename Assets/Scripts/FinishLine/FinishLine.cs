@@ -10,10 +10,11 @@ public class FinishLine : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         other.GetComponent<CharacterBase>().canMove = false;
+        other.GetComponent<CharacterBase>().autoMove = false;
         if (other.CompareTag("Player"))
         {
             CamController.instance.canChangeToBonusStageOffset = true;
-
+            
         }
         else
         {

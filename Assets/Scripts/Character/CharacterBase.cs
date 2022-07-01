@@ -12,6 +12,7 @@ public class CharacterBase : MonoBehaviour
     [SerializeField] protected CharacterAnimController animController;
     [SerializeField] protected float movementSpeed;
     public bool canMove;
+    public bool autoMove;
 
     [Header("Weapon")]
     [SerializeField] protected GameObject weaponPivot;
@@ -19,8 +20,7 @@ public class CharacterBase : MonoBehaviour
     protected GameObject weapon;
     protected int weaponID;
     protected SphereCollider weaponTrigger;
-
-    protected WeaponManager weaponManager;
+    protected List<GameObject> weaponListToChange;
 
 
     [Header("Balloon")]
@@ -33,6 +33,8 @@ public class CharacterBase : MonoBehaviour
     [Header("Map")]
     [SerializeField] protected GameObject map;
     [SerializeField] protected string groundToFind;
+    [SerializeField] protected Transform finishLinePos;
+    [SerializeField] protected string finishLineToFind;
 
     [Header("CheckPoint")]
     [SerializeField] protected List<GameObject> checkPointList;
@@ -64,12 +66,12 @@ public class CharacterBase : MonoBehaviour
 
         movementSpeed = weapon.GetComponent<WeaponBase>().getMovementSpeed();
     }
-    protected void Start()
-    {
+    //protected void Start()
+    //{
 
-        weaponManager = GameObject.Find("weaponManager").GetComponent<WeaponManager>();
+    //    weaponManager = GameObject.Find("weaponManager").GetComponent<WeaponManager>();
         
-    }
+    //}
 
     protected void Update()
     {
@@ -82,7 +84,6 @@ public class CharacterBase : MonoBehaviour
             weaponTrigger = GetComponent<SphereCollider>();
             weaponTrigger.radius = weapon.GetComponent<WeaponBase>().getWeaponRange();
             movementSpeed = weapon.GetComponent<WeaponBase>().getMovementSpeed();
-
         }
     }
 
@@ -118,13 +119,13 @@ public class CharacterBase : MonoBehaviour
 
         Array.Clear(colliders, 0, colliders.Length);
 
+        autoMove = false;
+
     }
     public void stopAttack()
     {
         weaponTrigger.enabled = true;
         animController.characterState = CharacterAnimController.CharacterState.StopAttack;
-        
-        
     }
 
     protected void OnTriggerEnter(Collider other)
@@ -152,6 +153,10 @@ public class CharacterBase : MonoBehaviour
     {
         return weaponID;
     }
+    public GameObject getWeapon()
+    {
+        return weapon;
+    }
 
     protected virtual void movementProcess() { }
     protected virtual void move() { }
@@ -159,19 +164,23 @@ public class CharacterBase : MonoBehaviour
     protected void playState(GameManager.GameState state)
     {
         canMove = state == GameManager.GameState.Play;
-
-        if (state == GameManager.GameState.Ready)
+        switch(state)
         {
-            transform.position = spawnPoint.position;
-        }
-        
-        if (state == GameManager.GameState.Play)
-        {
-            map = GameObject.FindGameObjectWithTag(groundToFind);
+            case GameManager.GameState.Ready:
+                {
+                    transform.position = spawnPoint.position;
+                    autoMove = false;
+                    break;
+                }
+            case GameManager.GameState.Play:
+                {
+                    map = GameObject.FindGameObjectWithTag(groundToFind);
 
-            createBalloonList();
-            createCheckpointList();
-            
+                    createBalloonList();
+                    createCheckpointList();
+                    finishLinePos = GameObject.FindGameObjectWithTag(finishLineToFind).transform;
+                    break;
+                }
         }
     }
     protected void rotateProcess(Vector3 dirX)
@@ -207,6 +216,19 @@ public class CharacterBase : MonoBehaviour
     {
         return checkPointList;
     }
+    public List<GameObject> getBalloonList()
+    {
+        return balloonList;
+    }
 
+    protected void autoMoveHandle()
+    {
+        Vector3 dir = (finishLinePos.position - transform.position).normalized;
+        dir = new Vector3 (dir.x, 0, dir.z);
+        transform.position += dir * movementSpeed * Time.deltaTime;
+        animController.characterState = CharacterAnimController.CharacterState.Moving;
+
+        rotateProcess(Vector3.forward);
+    }
 
 }

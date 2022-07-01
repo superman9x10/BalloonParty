@@ -4,13 +4,31 @@ using UnityEngine;
 using UnityEngine.UI;
 public class BonusUI : MonoBehaviour
 {
+    public static BonusUI instance;
     [SerializeField] Slider slider;
-    [SerializeField] ProgressBarPro abc;
+    [SerializeField] ProgressBarPro progressBar;
 
+    public bool isSetValue;
+    public bool canThrow;
+    public float throwForce;
+    private void Awake()
+    {
+        instance = this;
+    }
     private void Update()
     {
         //slider.value = Mathf.Abs(Mathf.Sin(Time.time * 5f));
-        abc.SetValue(Mathf.Abs(Mathf.Sin(Time.time * 4)));
-        Debug.Log(abc.Value);
+        if(!isSetValue)
+        {
+            progressBar.SetValue(Mathf.Abs(Mathf.Sin(Time.time * 5)));
+        }
+        
+        
+        if(Input.GetMouseButtonDown(0) && !isSetValue)
+        {
+            isSetValue = true;
+            canThrow = true;
+            throwForce = progressBar.Value * 100;
+        }
     }
 }
