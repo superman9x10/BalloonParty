@@ -45,11 +45,13 @@ public class CharacterBase : MonoBehaviour
     private void OnEnable()
     {
         GameManager.OnGameStateChanged += playState;
+        Balloon.balloonHitWeapon += checkBalloonInList;
     }
 
     private void OnDisable()
     {
         GameManager.OnGameStateChanged -= playState;
+        Balloon.balloonHitWeapon -= checkBalloonInList;
     }
 
 
@@ -66,12 +68,6 @@ public class CharacterBase : MonoBehaviour
 
         movementSpeed = weapon.GetComponent<WeaponBase>().getMovementSpeed();
     }
-    //protected void Start()
-    //{
-
-    //    weaponManager = GameObject.Find("weaponManager").GetComponent<WeaponManager>();
-        
-    //}
 
     protected void Update()
     {
@@ -187,6 +183,7 @@ public class CharacterBase : MonoBehaviour
     {
         Quaternion targetRot = Quaternion.LookRotation(dirX);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, 5 * Time.deltaTime);
+
     }
 
     protected void createBalloonList()
@@ -231,4 +228,11 @@ public class CharacterBase : MonoBehaviour
         rotateProcess(Vector3.forward);
     }
 
+    protected void checkBalloonInList(GameObject balloon)
+    {
+        if(balloonList.Contains(balloon)) {
+            balloonList.Remove(balloon);
+            Destroy(balloon);
+        }
+    }
 }

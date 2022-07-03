@@ -206,6 +206,7 @@ MonoBehaviour:
   canChangeToBonusStageOffset: 0
   camObj: {fileID: 320259726}
   smoothCamSpeed: 5
+  camOffset: {fileID: 0}
 --- !u!1 &329584424
 GameObject:
   m_ObjectHideFlags: 0
@@ -3168,6 +3169,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GreenBot
       objectReference: {fileID: 0}
+    - target: {fileID: 3698471113051218947, guid: 84d74a5b9000e2d4c9df6aacdef01317, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7684738976698998079, guid: 84d74a5b9000e2d4c9df6aacdef01317, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -3970,6 +3975,10 @@ PrefabInstance:
     - target: {fileID: 7991713387625303552, guid: 51d14305e4a4e3e479256230c28af279, type: 3}
       propertyPath: m_Name
       value: YellowBot
+      objectReference: {fileID: 0}
+    - target: {fileID: 7991713387625303552, guid: 51d14305e4a4e3e479256230c28af279, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7991713387625303553, guid: 51d14305e4a4e3e479256230c28af279, type: 3}
       propertyPath: player

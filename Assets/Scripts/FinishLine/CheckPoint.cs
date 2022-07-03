@@ -23,7 +23,7 @@ public class CheckPoint : MonoBehaviour
 
     IEnumerator delayMoving(BotController bot)
     {
-        int randTime = Random.Range(1, 2);
+        int randTime = Random.Range(1, 3);
         yield return new WaitForSeconds(randTime);
         bot.changeWeapon();
         if(bot.getCheckPointList().Count == 0)

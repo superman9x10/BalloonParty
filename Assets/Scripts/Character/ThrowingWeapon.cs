@@ -5,7 +5,6 @@ using UnityEngine;
 public class ThrowingWeapon : MonoBehaviour
 {
     [Header("References")]
-    public Transform cam;
     public Transform attackPoint;
     public GameObject objectToThrow;
 
@@ -33,6 +32,10 @@ public class ThrowingWeapon : MonoBehaviour
         projectile.GetComponent<BoxCollider>().isTrigger = true;
         projectile.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         projectile.GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.Continuous;
+       
+        CamController.instance.camObj.Follow = projectile.transform;
+
+        //Time.timeScale = 0.1f;
         StartCoroutine(startThrow(projectile, force));
         StartCoroutine(endGame());
         
@@ -40,11 +43,15 @@ public class ThrowingWeapon : MonoBehaviour
     IEnumerator startThrow(GameObject projectile, float force)
     {
         float startTime = Time.time;
-        while (Time.time < startTime + 0.75f)
+        while (Time.time < startTime + 0.65f)
         {
             projectile.transform.position += force * Time.deltaTime * Vector3.forward;
+            
             yield return null;
         }
+
+        //Time.timeScale = 1f;
+        
         Destroy(projectile);
     }
     IEnumerator endGame()
@@ -52,7 +59,7 @@ public class ThrowingWeapon : MonoBehaviour
         yield return new WaitForSeconds(2f);
         CamController.instance.canChangeToBonusStageOffset = false;
         BonusUI.instance.isSetValue = false;
-        GameManager.instance.updateGameState(GameManager.GameState.EndGame);
+        GameManager.instance.updateGameState(GameManager.GameState.EndGame);    
     }
 
 }

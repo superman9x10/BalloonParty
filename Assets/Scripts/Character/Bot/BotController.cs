@@ -9,9 +9,13 @@ public class BotController : CharacterBase
     [Header("BotController")]
 
     [SerializeField] Transform targetPos;
+
     [SerializeField] float timeToRandom;
     [SerializeField] GameObject player;
 
+    public Transform attackPoint;
+    public GameObject objectToThrow;
+    public bool isHitFinishLine;
     private void Start()
     {
         //base.Start();
@@ -22,6 +26,7 @@ public class BotController : CharacterBase
     {
         base.Update();
         movementProcess();
+        finishLineHandle();
     }
 
     protected override void movementProcess()
@@ -93,5 +98,36 @@ public class BotController : CharacterBase
 
     }
 
-    
+    void finishLineHandle()
+    {
+        if(isHitFinishLine)
+        {
+            isHitFinishLine = false;
+            StartCoroutine(startThrow());
+        }
+    }
+
+    IEnumerator startThrow()
+    {
+        objectToThrow = gameObject.GetComponent<CharacterBase>().getWeapon();
+
+        GameObject projectile = Instantiate(objectToThrow, attackPoint.position, Quaternion.Euler(new Vector3(180, 0, 0)));
+        projectile.AddComponent<BoxCollider>();
+        projectile.AddComponent<Rigidbody>();
+        projectile.GetComponent<BoxCollider>().isTrigger = true;
+        projectile.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        projectile.GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.Continuous;
+
+        int force = Random.Range(45, 170);
+        int randTime = Random.Range(1, 3);
+        yield return new WaitForSeconds(randTime);
+
+        float startTime = Time.time;
+        while (Time.time < startTime + 0.65f)
+        {
+            projectile.transform.position += force * Time.deltaTime * Vector3.forward;
+            yield return null;
+        }
+        Destroy(projectile);
+    }
 }

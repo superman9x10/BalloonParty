@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 public class FinishLine : MonoBehaviour
 {
     [SerializeField] GameObject bonusStage;
@@ -9,16 +8,20 @@ public class FinishLine : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        other.GetComponent<CharacterBase>().canMove = false;
-        other.GetComponent<CharacterBase>().autoMove = false;
+        if(!other.CompareTag("Weapon"))
+        {
+            other.GetComponent<CharacterBase>().canMove = false;
+            other.GetComponent<CharacterBase>().autoMove = false;
+        }
+
         if (other.CompareTag("Player"))
         {
             CamController.instance.canChangeToBonusStageOffset = true;
             
         }
-        else
+        else if(!other.CompareTag("Weapon"))
         {
-
+            other.GetComponent<BotController>().isHitFinishLine = true;
             //GameManager.instance.updateGameState(GameManager.GameState.Lose);
         }
     }

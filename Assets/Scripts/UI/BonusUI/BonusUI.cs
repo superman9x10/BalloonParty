@@ -28,7 +28,7 @@ public class BonusUI : MonoBehaviour
         {
             isSetValue = true;
             canThrow = true;
-            throwForce = progressBar.Value * 100;
+            throwForce = progressBar.Value * 170;
         }
     }
 }

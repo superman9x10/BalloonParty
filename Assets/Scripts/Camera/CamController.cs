@@ -8,9 +8,9 @@ public class CamController : MonoBehaviour
     public static CamController instance;
     public bool canChangeToBonusStageOffset;
 
-    [SerializeField] CinemachineVirtualCamera camObj;
+    public CinemachineVirtualCamera camObj;
     [SerializeField] float smoothCamSpeed;
-    CinemachineTransposer camOffset;
+    public CinemachineTransposer camOffset;
     Vector3 firstCamOffset;
     Quaternion firstRotation;
 
@@ -50,6 +50,7 @@ public class CamController : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(15f, 0, 0)), 3 * Time.deltaTime);
             if(camOffset.m_FollowOffset == new Vector3(0.36f, 3f, -2.5f))
             {
+                canChangeToBonusStageOffset = false;
                 UIManager.instance.showBonusStageUI();
             }
         }
@@ -59,6 +60,7 @@ public class CamController : MonoBehaviour
     {
         if(state == GameManager.GameState.Ready)
         {
+            CamController.instance.camObj.Follow = GameObject.FindGameObjectWithTag("Player").transform;
             camOffset.m_FollowOffset = firstCamOffset;
             transform.rotation = firstRotation;
         }
